@@ -1,0 +1,13 @@
+FROM mcr.microsoft.com/devcontainers/python:3.12-bookworm
+RUN apt-get update && \
+    apt-get install --no-install-recommends -y make curl cmake sudo
+
+USER vscode
+WORKDIR /workspace
+
+# Install uv.
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+COPY pyproject.toml uv.lock /workspace/
+RUN uv sync
+
+ENV PYTHONPATH=/workspace/.venv/lib64/python3.12/site-packages:/workspace

@@ -1,0 +1,16 @@
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile.devcontainer
+    container_name: "langchain-assets"
+    volumes:
+      - type: bind
+        source: ..
+        target: /workspace
+        consistency: consistent
+      - type: bind
+        source: /home/brooks/.gitconfig
+        target: /root/.gitconfig
+        read_only: true
+    command: /bin/sh -c "while sleep 1000; do :; done"
