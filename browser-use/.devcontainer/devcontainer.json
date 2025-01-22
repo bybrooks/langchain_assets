@@ -1,0 +1,80 @@
+{
+    "name": "browser-use",
+    "dockerComposeFile": [
+        "docker-compose.devcontainer.yml"
+    ],
+    "service": "app",
+    "workspaceFolder": "/workspace",
+    "shutdownAction": "stopCompose",
+    "features": {},
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python",
+                "ms-python.mypy-type-checker",
+                "charliermarsh.ruff",
+                "njpwerner.autodocstring",
+                "ceintl.vscode-language-pack-ja",
+                "github.copilot",
+                "oderwat.indent-rainbow",
+                "shardulm94.trailing-spaces",
+                "hashicorp.terraform",
+                "usernamehw.errorlens",
+                "gruntfuggly.todo-tree"
+            ],
+            "settings": {
+                "python.languageServer": "Pylance",
+                "trailing-spaces.trimOnSave": true,
+                "files.insertFinalNewline": true,
+                "files.trimTrailingWhitespace": true,
+                "python.analysis.autoFormatStrings": true, // 文字列で{}を使うと自動でf-stringとする
+                "python.analysis.autoImportCompletions": true, // 自動インポート
+                "[python]": {
+                    "editor.rulers": [
+                        {
+                            "column": 88,
+                            "color": "#dddcdc"
+                        }
+                    ],
+                    "editor.defaultFormatter": "charliermarsh.ruff",
+                    "editor.formatOnSave": true,
+                    "editor.codeActionsOnSave": {
+                        "source.organizeImports": "explicit"
+                    }
+                },
+                "mypy-type-checker.severity": {
+                    "error": "Error",
+                    "note": "Information"
+                },
+                "python.testing.unittestEnabled": false,
+                "python.testing.pytestEnabled": true,
+                "[yaml]": {
+                    "editor.insertSpaces": true,
+                    "editor.tabSize": 2,
+                    "editor.autoIndent": "advanced",
+                    "diffEditor.ignoreTrimWhitespace": true
+                },
+                "terminal.integrated.profiles.linux": {
+                    "bash": {
+                        "path": "bash",
+                        "icon": "terminal-bash"
+                    }
+                },
+                "terminal.integrated.defaultProfile.linux": "bash",
+                "python.pythonPath": "/usr/local/bin/python3",
+                "python.linting.pylintEnabled": false,
+                "python.linting.lintOnSave": true,
+                "python.linting.enabled": true,
+                "python.linting.flake8Enabled": false,
+                "python.analysis.inlayHints.callArgumentNames": "all",
+                "autoDocstring.docstringFormat": "google",
+                "python.linting.mypyEnabled": true,
+                "python.testing.pytestArgs": [
+                    "tests",
+                    "-vv", // 詳細結果の出力
+                    "-s" // print文の出力
+                ]
+            }
+        }
+    }
+}

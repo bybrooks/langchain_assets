@@ -1,0 +1,18 @@
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile.devcontainer
+    container_name: "browser-use"
+    volumes:
+      - type: bind
+        source: ..
+        target: /workspace
+        consistency: consistent
+      - type: bind
+        source: /home/brooks/.gitconfig
+        target: /root/.gitconfig
+        read_only: true
+    env_file:
+      - ../.env
+    command: /bin/sh -c "while sleep 1000; do :; done"
